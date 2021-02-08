@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Manager</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <link rel="stylesheet" href="activity.css">
+
+   </head>
+
+<body style="background-image: url(https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg?cs=srgb&dl=three-green-assorted-plants-in-white-ceramic-pots-776656.jpg&fm=jpg); background-size: cover;">
+    <!--By using the  bootstrap:- creating a nav_bar with some buttons-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Activity Manager</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./activityManager.html">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.google.com">Google</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--start creating layout(div) three div left,mid,right-->
+    <div class="container-fluid">
+        <!--for div in column manner-->
+        <div class="row">
+            <!--first col. left pannel nav:-contains (plan your task,all task,calender)-->
+
+            <div class="col-lg-2 col-md-2 col-12 mt-4">
+
+                <nav class="left-navbar">
+
+                    <!--link left pannel to pages for indivisual tasks  eg:-all task,paln your day,calender -->
+
+                    <ul class="left-nav-item ">
+                        <li class="nav-item"><a class="nav-link text-dark" href="./index.html">Plan Your Day</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="./alltask.html">All Tasks</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="./calender.html">Calendar</a></li>
+                    </ul>
+
+                </nav>
+
+            </div>
+            <!--second col. middle,input field(form)-->
+
+            <div class="col-lg-3 col-md-3 col-12 mt-4">
+                <!--creating form in second column attach with a button to pushData in the form-->
+                <!--creating form / task field-->
+                <form class="text-dark">
+                    <div class="form-group">
+                        <label for="task">Task:</label>
+                        <input type="text" class="form-control" id="task" autocomplete="" name="task" placeholder="Task">
+                    </div>
+                    <!--creatinng form/ date type/datefield-->
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" class="form-control" id="date" autocomplete="" name="date" placeholder="date">
+                    </div>
+                    <!--creatinng form/ select type /status field-->
+                    <div class="form-group "><br> Status : <select class="form-control col-xs-4" name="status" id="status">
+                            <option value="start">Start</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Complete">Complete</option>
+                        </select></div>
+                    <!--creatinng form/ select type /priority field-->
+                    <div class="form-group "><br>Priority : <select class="form-control col-xs-4" name="priority" id="priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <!--creatinng button with on click function to pushData in the form-->
+                    <button onclick="pushData()" class="btn btn-danger active add-Save-button " id="btn1">Save</button>
+                </form>
+
+            </div>
+            <!--third col. right pannel  (to show data of curent data in the table)-->
+            <div class="col-lg-4 col-md-4 col-12 mt-4">
+
+                
+                    <h class="text-center text-dark"><strong>EXISTING TASK</strong></h>
+                
+                <table id="demo" class="table table-striped text-dark" border="3"></table>
+            </div>
+        </div>
+    </div>
+
+    <!--link js-->
+    <script src="./activity.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Task</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- <link rel="stylesheet" href="activity.css"> -->
+
+    <link rel="stylesheet" href="./monthly.css">
+    <style type="text/css">
+         .left-nav-item{
+         list-style: none;
+         }
+        #mycalendar {
+            width: 100%;
+            margin: 2em auto 0 auto;
+            max-width: 80em;
+            border: 1px solid #666;
+    
+    
+           
+        }
+    
+    </style>
+
+</head>
+
+<body>
+    <!--this page contains the list of all task-->
+    <header>
+        <!--same as first page by bootstrap creating navbar along with buttons-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Activity Manager</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" >
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./activityManager.html">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.google.com">Google</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--creating layout (div)2 div(1:- left as index page and2:-for show all task of all task) -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-12 mt-4">
+                <nav class="left-navbar">
+                    <!--link left pannel to pages for indivisual tasks  eg:-all task,paln your day,calender -->
+                    <ul class="left-nav-item">
+                        <li class="nav-item"><a class="nav-link text-dark" href="./index.html">Plan Your Day</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="./alltask.html">All Tasks</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="./calender.html">Calendar</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-12 mt-5 text-dark">
+                <h3 class="text-center ">Calendar</h3>
+                <div class="monthly" id="mycalendar"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./activity.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/monthly.js"></script>
+    <script type="text/javascript">
+          var data = JSON.parse(localStorage.getItem("data")) || [];
+        var monthly = [];
+        var color = {start: "red","In Progress": "blue",Complete: "green"};
+        data.forEach(function(l, index) {
+
+            monthly.push({
+                id: index,
+                name: l.task1,
+                startdate: l.date1,
+                enddate: l.date1,
+                starttime: "",
+                endtime: "",
+                color: color[l.status1],
+                //url: ""
+            });
+        });
+
+
+
+        var sampleEvents = {
+            monthly: monthly
+        };
+
+        $(window).load(function() {
+            $('#mycalendar').monthly({
+                mode: 'event',
+                dataType: 'json',
+                events: sampleEvents
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

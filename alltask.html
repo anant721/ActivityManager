@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Task</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <link rel="stylesheet" href="activity.css">
+    <style>
+        #showUpdateForm{
+            width:300px;
+            margin:auto;
+        }
+    </style>
+</head>
+
+<body style="background-image: url(https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg?cs=srgb&dl=three-green-assorted-plants-in-white-ceramic-pots-776656.jpg&fm=jpg); background-size: cover;">
+    <!--this page contains the list of all task-->
+    <header>
+        <!--same as first page by bootstrap creating navbar along with buttons-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Activity Manager</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./activityManager.html">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.google.com">Google</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--creating layout (div)2 div(1:- left as index page and2:-for show all task of all task) -->
+    <div class="container-fluid">
+        <div class="row">          
+                <div class="col-lg-2 col-md-2 col-12 mt-4">
+                    <nav class="left-navbar">
+                        <!--link left pannel to pages for indivisual tasks  eg:-all task,paln your day,calender -->
+                        <ul class="left-nav-item">
+                            <li class="nav-item"><a class="nav-link text-dark" href="./index.html">Plan Your Day</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" href="./alltask.html">All Tasks</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" href="./calender.html">Calendar</a></li>
+                        </ul>
+                    </nav>
+                </div>  
+                <div class="col-lg-8 col-md-8 col-12 mt-4 ">
+                    <h3 class="text-center text-dark">All Task</h3><input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for tasks.." title="Type in a name"><br>
+                    
+                       
+                    
+                  <div>
+                    <table id="demo" class="table table-striped text-dark" border="3"></table>
+                </div>
+                </div> 
+            </div>       
+        </div>
+        <div class="col-lg-3 col-md-3 col-12 mt-4" id="showUpdateForm">
+            <!--creating form in second column attach with a button to pushData in the form-->
+            <!--creating form / task field-->
+            <form class="text-dark">
+                <div class="form-group">
+                    <label for="task">Task:</label>
+                    <input type="text" class="form-control" id="task" autocomplete="" name="task" placeholder="Task">
+                </div>
+                <!--creatinng form/ date type/datefield-->
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" class="form-control" id="date" autocomplete="" name="date" placeholder="date">
+                </div>
+                <!--creatinng form/ select type /status field-->
+                <div class="form-group "><br> Status : <select class="form-control col-xs-4" name="status" id="status">
+                        <option value="start">Start</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Complete">Complete</option>
+                    </select></div>
+                <!--creatinng form/ select type /priority field-->
+                <div class="form-group "><br>Priority : <select class="form-control col-xs-4" name="priority" id="priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <!--creatinng button with on click function to pushData in the form-->
+                <button onclick="pushData()" class="btn btn-danger active add-Save-button " id="btn1">Save</button>
+            </form>
+
+        </div>
+    <!--link js-->
+    <script src="./activity.js"></script>
+    <script>
+        $('#showUpdateForm').hide();
+    var data = [];
+    function tb() {
+    var d_tb = "<tr><td><b>Task</b></td><td><b>Status</b></td><td><b>Priority</b></td><td><b>Date</b></td><td><b>Delete</b></td><td><b>Edit</b></td></tr>";
+
+    for (let i = 0; i < data.length; i++) {
+       // console.log(data[i]);
+        
+            d_tb += "<tr>";
+            d_tb += "<td>" + data[i].task1 + "</td>";
+            d_tb += "<td>" + data[i].status1 + "</td>";
+            d_tb += "<td>" + data[i].priority1 + "</td>";
+            d_tb += "<td>" + data[i].date1 + "</td>";
+            d_tb += `<td><button onclick="remove(${i})" class="btn btn-secondary">Delete</button></td>`;
+            d_tb += `<td><button onclick="Edit(${i})" class="btn btn-secondary"> Edit</button></td>`;
+            d_tb += "</tr>";
+        
+    }
+    document.getElementById("demo").innerHTML = d_tb;
+/// for sorting code from w3school
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("demo");
+    switching = true;
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[1];
+            y = rows[i + 1].getElementsByTagName("TD")[1];
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+function myFunction() {
+            var input,filter,table,tr, td, i,txtValue;
+       
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("demo");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    getData();
+    tb();
+    
+    </script>
+
+</body>
+
+</html>
